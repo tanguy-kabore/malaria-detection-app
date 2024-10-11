@@ -1,38 +1,221 @@
-.App {
+@import url("https://rsms.me/inter/inter.css");
+
+/* Style global pour l'application */
+.app {
   text-align: center;
+  font-family: 'Inter', Arial, sans-serif;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Styles pour le téléversement de fichiers */
+.upload-buttons {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #f4f4f4;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#file-upload {
+  display: block;
+  margin: 10px auto;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.button-group {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 15px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
   color: white;
+  transition: background-color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
 }
 
-@keyframes App-logo-spin {
+.reset-button {
+  background-color: #dc3545;
+}
+
+.reset-button:hover {
+  background-color: #c82333;
+}
+
+.reset-button:disabled {
+  background-color: #f5c6cb;
+}
+
+/* Styles pour l'aperçu d'image */
+.image-preview {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.image-preview img {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Styles pour les résultats */
+.result-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.result-details {
+  background-color: #f9f9f9; /* Couleur de fond douce */
+  padding: 20px; /* Padding autour du contenu */
+  border-radius: 10px; /* Bords arrondis */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre pour un effet de profondeur */
+  max-width: 400px; /* Largeur maximale */
+  margin: 20px auto; /* Centrer le bloc */
+  animation: fadeIn 1s ease-in-out; /* Animation d'apparition */
+}
+
+.result-title {
+  font-size: 24px; /* Taille de police augmentée pour le titre */
+  font-weight: bold; /* Titre en gras */
+  color: #2c3e50; /* Couleur du titre */
+  margin-bottom: 15px; /* Espacement sous le titre */
+  text-align: center; /* Centrer le titre */
+}
+
+.result-info p {
+  font-size: 18px; /* Taille de police des informations */
+  color: #34495e; /* Couleur du texte */
+  line-height: 1.6; /* Espacement entre les lignes */
+  margin: 10px 0; /* Espacement entre les paragraphes */
+}
+
+.result-info strong {
+  color: #e74c3c; /* Couleur rouge pour les valeurs importantes */
+}
+
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0; /* Départ invisible */
+    transform: translateY(20px); /* Déplacement initial vers le bas */
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1; /* Apparition progressive */
+    transform: translateY(0); /* Position normale */
   }
+}
+
+/* Ajout de la réactivité */
+@media (max-width: 600px) {
+  .result-details {
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  .result-title {
+    font-size: 20px;
+  }
+
+  .result-info p {
+    font-size: 16px;
+  }
+}
+
+.accuracy-gauge {
+  flex: 1;
+  max-width: 200px; /* Limite la taille de la jauge */
+  padding-left: 20px;
+}
+
+.accuracy-gauge h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Styles pour la section de feedback */
+.feedback {
+  margin-top: 25px;
+  padding: 15px;
+}
+
+.feedback h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.feedback-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.feedback-buttons button {
+  background-color: #007bff;
+  padding: 12px 20px;
+}
+
+.feedback-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.feedback-buttons button[aria-label="Accepter le diagnostic"] {
+  background-color: #28a745;
+}
+
+.feedback-buttons button[aria-label="Rejeter le diagnostic"] {
+  background-color: #dc3545;
+}
+
+/* Styles pour l'annotateur d'images */
+.image-annotator-container {
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.back-button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background-color: #17a2b8;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #138496;
+}
+
+/* Styles pour les messages d'erreur */
+.error {
+  color: #dc3545;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #f5c6cb;
+  background-color: #f8d7da;
+  border-radius: 5px;
+  display: inline-block;
 }
